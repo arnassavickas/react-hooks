@@ -50,12 +50,13 @@ function Game() {
   const currentMove = squares.filter(square => square).length
 
   function selectSquare(square) {
+    console.log(moves)
     if (!squares[square] && !winner) {
       const prevSquares = [...squares]
       prevSquares[square] = nextValue
       setSquares(prevSquares)
       if (currentMove + 1 !== moves.length) {
-        setMoves([...moves.slice(0, currentMove), prevSquares])
+        setMoves([...moves.slice(0, currentMove + 1), prevSquares])
       } else {
         setMoves([...moves, prevSquares])
       }
@@ -63,8 +64,9 @@ function Game() {
   }
 
   function restart() {
-    setSquares(Array(9).fill(null))
-    setMoves([squares])
+    const emptySquares = Array(9).fill(null)
+    setSquares(emptySquares)
+    setMoves([emptySquares])
   }
 
   return (
