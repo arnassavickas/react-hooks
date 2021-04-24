@@ -47,6 +47,8 @@ test('can play a game of tic tac toe', () => {
   userEvent.click(s4)
   expect(s4).toHaveTextContent('')
 
+  console.log(JSON.parse(window.localStorage.getItem('squares')))
+
   alfredTip(
     () =>
       expect(JSON.parse(window.localStorage.getItem('squares'))).toEqual(
